@@ -1,20 +1,24 @@
 # Wasm AES128
 
-Thin wrapper around aes-soft. Implements encrypt and decrypt functions.
+Thin wrapper around [aes-soft](https://docs.rs/crate/aes-soft/0.3.3). Implements encrypt and decrypt functions.
 
 Blocks to encode must have length of 16 bytes.
 
+## Build
+
 To build, use `wasm-pack build`.
 
-## Usign with Deno
+## Using with Deno
 
-In the output from `wasm-pack build` there's a javascript file with a header:
+After running `wasm-pack build`, a `pkg/` directory is created on your project root.
+
+Inside this directory there's a javascript file `wasm_aes_soft_bg.js` which starts with:
 
 ```javascript
 import * as wasm from "./wasm_aes_soft_bg.wasm";
 ```
 
-Replace it with:
+Replace that line these lines:
 
 ```javascript
 const binary = await Deno.readFile("./wasm_aes_soft_bg.wasm");
@@ -23,7 +27,7 @@ const instance = await WebAssembly.instantiate(wasmModule);
 const wasm = instance.exports;
 ```
 
-And you are good to go!
+Copy that file together with the `wasm_aes_soft_bg.wasm` binary to the project where you want to use AES128, and you are good to go!
 
 ## Credit
 
