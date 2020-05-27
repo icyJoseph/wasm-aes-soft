@@ -11,8 +11,8 @@ To build, use `wasm-pack build`.
 In the output from `wasm-pack build` there's a javascript file with a header:
 
 ```javascript
-import * as wasm from './wasm_aes_soft_bg.wasm';
-```
+import * as wasm from "./wasm_aes_soft_bg.wasm";
+```
 
 Replace it with:
 
@@ -21,11 +21,9 @@ const binary = await Deno.readFile("./wasm_aes_soft_bg.wasm");
 const wasmModule = new WebAssembly.Module(binary);
 const instance = await WebAssembly.instantiate(wasmModule);
 const wasm = instance.exports;
-
 ```
 
 And you are good to go!
-
 
 ## Credit
 
