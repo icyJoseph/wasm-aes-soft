@@ -18,7 +18,7 @@ Inside this directory there's a javascript file `wasm_aes_soft_bg.js` which star
 import * as wasm from "./wasm_aes_soft_bg.wasm";
 ```
 
-Replace that line these lines:
+Replace that line with these lines:
 
 ```javascript
 const binary = await Deno.readFile("./wasm_aes_soft_bg.wasm");
